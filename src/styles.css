@@ -5,131 +5,354 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Design system definition.
+ * Ecosystem 2026 — Design System (Phase 1/5 · Foundation + Tokens)
  *
- * The @theme inline block maps CSS custom properties to Tailwind utility
- * classes (e.g. --color-primary -> bg-primary, text-primary).
+ * Philosophy: a calm, intelligent, premium living ecosystem OS.
+ * DARK-FIRST. Light theme exists as a graceful inversion, but the
+ * design is engineered for charcoal canvases with cinematic glow.
  *
- * The :root and .dark blocks define the actual color values using oklch.
- * All colors MUST use oklch format.
+ * Token families covered here:
+ *  - color atmosphere   (charcoal · electric blue · amber · emerald · violet)
+ *  - layered surfaces   (base → elevated → floating → modal → overlay → assistant)
+ *  - semantic states    (success · warning · destructive · info · trust)
+ *  - glow hierarchy     (whisper · soft · ambient · focal · cinematic)
+ *  - opacity scale      (veil · soft · medium · strong · solid)
+ *  - z-layer system     (base · content · floating · modal · overlay · assistant · toast)
  *
- * To add a new semantic color:
- * 1. Add the variable to :root (light value) and .dark (dark value)
- * 2. Register it in @theme inline as --color-<name>: var(--<name>)
+ * Spacing, typography, motion are touched lightly here — they get
+ * their dedicated phases (2/5, 3/5).
  */
 
 @theme inline {
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --radius-2xl: calc(var(--radius) + 8px);
-  --radius-3xl: calc(var(--radius) + 12px);
-  --radius-4xl: calc(var(--radius) + 16px);
+  /* Radii — generous, breathing. 28px base. */
+  --radius-sm: calc(var(--radius) - 20px); /* 8  */
+  --radius-md: calc(var(--radius) - 16px); /* 12 */
+  --radius-lg: calc(var(--radius) - 12px); /* 16 */
+  --radius-xl: calc(var(--radius) - 4px); /* 24 */
+  --radius-2xl: var(--radius); /* 28 */
+  --radius-3xl: calc(var(--radius) + 8px); /* 36 */
+  --radius-full: 9999px;
+
+  /* Typography */
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Instrument Serif", "Inter", serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Type scale — silent sophistication. Phase 2/5 refined.
+     Steps follow a ~1.20 modular scale on mobile, opening to
+     ~1.25 at display sizes for cinematic hierarchy. */
+  --text-2xs: 0.6875rem; /* 11 — micro labels, eyebrows */
+  --text-xs: 0.75rem; /* 12 — captions, meta */
+  --text-sm: 0.8125rem; /* 13 — secondary UI */
+  --text-base: 0.9375rem; /* 15 — body */
+  --text-md: 1rem; /* 16 — emphasised body */
+  --text-lg: 1.125rem; /* 18 — subtitle */
+  --text-xl: 1.375rem; /* 22 — title S */
+  --text-2xl: 1.75rem; /* 28 — title M */
+  --text-3xl: 2.25rem; /* 36 — title L */
+  --text-4xl: 3rem; /* 48 — display S */
+  --text-5xl: 3.75rem; /* 60 — display M */
+  --text-6xl: 4.5rem; /* 72 — display L (desktop hero) */
+
+  /* Line heights — breathing rhythm. */
+  --leading-tightest: 1.02;
+  --leading-tight: 1.12;
+  --leading-snug: 1.28;
+  --leading-normal: 1.55;
+  --leading-relaxed: 1.7;
+
+  /* Letter spacing — Linear-ish discipline. */
+  --tracking-tightest: -0.045em;
+  --tracking-tighter: -0.035em;
+  --tracking-tight: -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.04em;
+  --tracking-eyebrow: 0.2em;
+
+  /* Spacing scale — 4px base, cinematic rhythm.
+     Use these for padding/margin/gap. Section rhythm relies on
+     space-10/14/20 to create the "breathing" pacing. */
+  --space-0: 0;
+  --space-px: 1px;
+  --space-0_5: 0.125rem; /* 2  */
+  --space-1: 0.25rem; /* 4  */
+  --space-1_5: 0.375rem; /* 6  */
+  --space-2: 0.5rem; /* 8  */
+  --space-3: 0.75rem; /* 12 */
+  --space-4: 1rem; /* 16 */
+  --space-5: 1.25rem; /* 20 */
+  --space-6: 1.5rem; /* 24 */
+  --space-7: 1.75rem; /* 28 */
+  --space-8: 2rem; /* 32 */
+  --space-10: 2.5rem; /* 40 — block rhythm */
+  --space-12: 3rem; /* 48 */
+  --space-14: 3.5rem; /* 56 — section rhythm */
+  --space-16: 4rem; /* 64 */
+  --space-20: 5rem; /* 80 — cinematic section */
+  --space-24: 6rem; /* 96 */
+  --space-32: 8rem; /* 128 — hero rhythm */
+
+  /* Container widths — mobile-first reading comfort. */
+  --container-xs: 22rem; /* 352 — narrow column      */
+  --container-sm: 28rem; /* 448 — single-column read */
+  --container-md: 36rem; /* 576 — main feed width    */
+  --container-lg: 48rem; /* 768 — tablet             */
+  --container-xl: 64rem; /* 1024 — desktop           */
+  --container-2xl: 80rem; /* 1280 — wide canvas       */
+
+  /* Safe areas — thumb ergonomics + foldable awareness. */
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+
+  /* Colors — surface system + semantic + accents */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+
+  /* Layered surfaces */
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-surface-floating: var(--surface-floating);
+  --color-surface-modal: var(--surface-modal);
+  --color-surface-overlay: var(--surface-overlay);
+  --color-surface-assistant: var(--surface-assistant);
+  --color-surface-sunken: var(--surface-sunken);
+
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
+
+  /* Primary — electric blue, ecosystem signature */
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
+  --color-primary-soft: var(--primary-soft);
+  --color-primary-glow: var(--primary-glow);
+
+  /* Human warmth — amber */
+  --color-warm: var(--warm);
+  --color-warm-foreground: var(--warm-foreground);
+  --color-warm-soft: var(--warm-soft);
+
+  /* Trust — emerald */
+  --color-trust: var(--trust);
+  --color-trust-foreground: var(--trust-foreground);
+  --color-trust-soft: var(--trust-soft);
+
+  /* Intelligence — muted violet */
+  --color-intelligence: var(--intelligence);
+  --color-intelligence-foreground: var(--intelligence-foreground);
+  --color-intelligence-soft: var(--intelligence-soft);
+
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+
+  /* Semantic states */
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-info: var(--info);
+
   --color-border: var(--border);
+  --color-border-soft: var(--border-soft);
+  --color-border-strong: var(--border-strong);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-ring-offset-background: var(--background);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Elevation — soft, premium, never harsh. */
+  --shadow-none: none;
+  --shadow-hairline: 0 0 0 1px var(--border-soft);
+  --shadow-soft: 0 1px 2px oklch(0 0 0 / 0.18), 0 2px 8px oklch(0 0 0 / 0.14);
+  --shadow-elevated: 0 8px 24px oklch(0 0 0 / 0.28), 0 2px 6px oklch(0 0 0 / 0.18);
+  --shadow-float: 0 16px 48px oklch(0 0 0 / 0.4), 0 4px 12px oklch(0 0 0 / 0.2);
+  --shadow-modal: 0 32px 80px oklch(0 0 0 / 0.55), 0 8px 24px oklch(0 0 0 / 0.28);
+
+  /* Glow hierarchy — adaptive cinematic glow. Less is more. */
+  --glow-whisper: 0 0 0 1px color-mix(in oklab, var(--primary) 18%, transparent);
+  --glow-soft: 0 0 24px -6px color-mix(in oklab, var(--primary) 28%, transparent);
+  --glow-ambient: 0 0 48px -8px color-mix(in oklab, var(--primary) 36%, transparent);
+  --glow-focal:
+    0 0 0 4px color-mix(in oklab, var(--primary) 22%, transparent),
+    0 0 32px -4px color-mix(in oklab, var(--primary) 40%, transparent);
+  --glow-cinematic:
+    0 0 80px -12px color-mix(in oklab, var(--primary) 50%, transparent),
+    0 0 24px -4px color-mix(in oklab, var(--primary) 30%, transparent);
+  --glow-warm: 0 0 32px -6px color-mix(in oklab, var(--warm) 38%, transparent);
+  --glow-trust: 0 0 32px -6px color-mix(in oklab, var(--trust) 38%, transparent);
+
+  /* Motion — tokens, not magic numbers. */
+  --duration-instant: 80ms;
+  --duration-fast: 160ms;
+  --duration-base: 220ms;
+  --duration-slow: 360ms;
+  --duration-slower: 520ms;
+  --ease-standard: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-emphasized: cubic-bezier(0.2, 0.9, 0.1, 1);
+  --ease-entrance: cubic-bezier(0, 0, 0.2, 1);
+  --ease-exit: cubic-bezier(0.4, 0, 1, 1);
 }
 
+/* ============================================================ */
+/* GLOBAL TOKENS — opacity scale + z-layer system                */
+/* These are not theme-dependent. They orchestrate depth.        */
+/* ============================================================ */
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.984 0.003 247.858);
-  --sidebar-foreground: oklch(0.129 0.042 264.695);
-  --sidebar-primary: oklch(0.208 0.042 265.755);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.968 0.007 247.896);
-  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-  --sidebar-border: oklch(0.929 0.013 255.508);
-  --sidebar-ring: oklch(0.704 0.04 256.788);
+  /* Opacity scale — breath of visibility. */
+  --opacity-veil: 0.04;
+  --opacity-soft: 0.08;
+  --opacity-medium: 0.16;
+  --opacity-strong: 0.28;
+  --opacity-solid: 0.56;
+
+  /* Layered z-system — predictable depth. */
+  --z-base: 0;
+  --z-content: 10;
+  --z-floating: 30; /* FAB, floating cards */
+  --z-nav: 40; /* bottom nav, app bar */
+  --z-sheet: 50; /* bottom sheets */
+  --z-modal: 60; /* modal dialogs */
+  --z-overlay: 70; /* full overlays */
+  --z-assistant: 80; /* ambient AI layer */
+  --z-toast: 90; /* ephemeral feedback */
 }
 
+/* ============================================================ */
+/* DARK THEME (DEFAULT) — deep charcoal canvas + electric blue.  */
+/* Dark-first: the ecosystem is designed here. Light inverts it. */
+/* ============================================================ */
+:root {
+  --radius: 1.75rem; /* 28px */
+
+  /* Canvas — deep charcoal, never pure black. */
+  --background: oklch(0.16 0.012 260); /* #1A1C20-ish */
+  --foreground: oklch(0.96 0.005 260);
+
+  /* Surface ladder — each step ≈ +3–4% L. */
+  --surface: oklch(0.19 0.014 260); /* base panels */
+  --surface-sunken: oklch(0.14 0.012 260); /* inset wells */
+  --surface-elevated: oklch(0.22 0.016 260); /* cards */
+  --surface-floating: oklch(0.25 0.018 260); /* FAB, floats */
+  --surface-modal: oklch(0.27 0.018 260); /* modal bodies */
+  --surface-overlay: oklch(0.12 0.012 260 / 0.72); /* scrim */
+  --surface-assistant: oklch(0.24 0.03 270); /* AI layer tint */
+
+  --card: oklch(0.22 0.016 260);
+  --card-foreground: oklch(0.96 0.005 260);
+  --popover: oklch(0.24 0.018 260);
+  --popover-foreground: oklch(0.96 0.005 260);
+
+  /* Primary — soft electric blue. Calm, never neon. */
+  --primary: oklch(0.72 0.16 245); /* ~#5BB0FF */
+  --primary-foreground: oklch(0.14 0.02 260);
+  --primary-soft: oklch(0.32 0.08 245);
+  --primary-glow: oklch(0.78 0.18 235);
+
+  /* Warmth — amber human highlights. */
+  --warm: oklch(0.82 0.12 70); /* ~#F0C58A */
+  --warm-foreground: oklch(0.18 0.04 70);
+  --warm-soft: oklch(0.32 0.06 70);
+
+  /* Trust — emerald, subtle. */
+  --trust: oklch(0.74 0.13 165); /* ~#6FD1AE */
+  --trust-foreground: oklch(0.14 0.04 165);
+  --trust-soft: oklch(0.28 0.06 165);
+
+  /* Intelligence — muted violet for AI surfaces. */
+  --intelligence: oklch(0.72 0.13 295); /* ~#B49BE8 */
+  --intelligence-foreground: oklch(0.14 0.04 295);
+  --intelligence-soft: oklch(0.3 0.07 295);
+
+  --secondary: oklch(0.26 0.016 260);
+  --secondary-foreground: oklch(0.96 0.005 260);
+  --muted: oklch(0.24 0.014 260);
+  --muted-foreground: oklch(0.7 0.012 260);
+  --accent: oklch(0.3 0.08 245);
+  --accent-foreground: oklch(0.92 0.04 245);
+
+  --destructive: oklch(0.68 0.2 22);
+  --destructive-foreground: oklch(0.14 0.02 260);
+  --success: var(--trust);
+  --warning: oklch(0.8 0.14 75);
+  --info: oklch(0.74 0.13 230);
+
+  --border: oklch(1 0 0 / 0.07);
+  --border-soft: oklch(1 0 0 / 0.04);
+  --border-strong: oklch(1 0 0 / 0.13);
+  --input: oklch(1 0 0 / 0.08);
+  --ring: oklch(0.72 0.16 245 / 0.55);
+}
+
+/* ============================================================ */
+/* LIGHT THEME — graceful inversion. Air, off-whites, restraint. */
+/* ============================================================ */
+.light {
+  --background: oklch(0.985 0.003 260);
+  --foreground: oklch(0.18 0.02 260);
+
+  --surface: oklch(0.965 0.005 260);
+  --surface-sunken: oklch(0.945 0.006 260);
+  --surface-elevated: oklch(1 0 0);
+  --surface-floating: oklch(1 0 0);
+  --surface-modal: oklch(1 0 0);
+  --surface-overlay: oklch(0.18 0.02 260 / 0.42);
+  --surface-assistant: oklch(0.96 0.03 270);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.02 260);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.02 260);
+
+  --primary: oklch(0.56 0.18 245);
+  --primary-foreground: oklch(1 0 0);
+  --primary-soft: oklch(0.94 0.04 245);
+  --primary-glow: oklch(0.64 0.2 235);
+
+  --warm: oklch(0.68 0.14 70);
+  --warm-foreground: oklch(1 0 0);
+  --warm-soft: oklch(0.95 0.04 70);
+
+  --trust: oklch(0.58 0.14 165);
+  --trust-foreground: oklch(1 0 0);
+  --trust-soft: oklch(0.94 0.04 165);
+
+  --intelligence: oklch(0.56 0.16 295);
+  --intelligence-foreground: oklch(1 0 0);
+  --intelligence-soft: oklch(0.95 0.04 295);
+
+  --secondary: oklch(0.96 0.005 260);
+  --secondary-foreground: oklch(0.18 0.02 260);
+  --muted: oklch(0.95 0.005 260);
+  --muted-foreground: oklch(0.5 0.02 260);
+  --accent: oklch(0.94 0.04 245);
+  --accent-foreground: oklch(0.4 0.18 245);
+
+  --destructive: oklch(0.58 0.22 25);
+  --destructive-foreground: oklch(1 0 0);
+  --success: var(--trust);
+  --warning: oklch(0.78 0.16 75);
+  --info: oklch(0.62 0.14 230);
+
+  --border: oklch(0.91 0.008 260);
+  --border-soft: oklch(0.95 0.005 260);
+  --border-strong: oklch(0.84 0.012 260);
+  --input: oklch(0.93 0.008 260);
+  --ring: oklch(0.56 0.18 245 / 0.45);
+}
+
+/* Legacy compatibility — many components reference `.dark .X`.
+   In dark-first, dark IS the root; .dark selector still matches via
+   the @custom-variant when explicitly used. We keep dark tokens at
+   :root, and re-declare here so explicit `class="dark"` works too. */
 .dark {
-  --background: oklch(0.129 0.042 264.695);
-  --foreground: oklch(0.984 0.003 247.858);
-  --card: oklch(0.208 0.042 265.755);
-  --card-foreground: oklch(0.984 0.003 247.858);
-  --popover: oklch(0.208 0.042 265.755);
-  --popover-foreground: oklch(0.984 0.003 247.858);
-  --primary: oklch(0.929 0.013 255.508);
-  --primary-foreground: oklch(0.208 0.042 265.755);
-  --secondary: oklch(0.279 0.041 260.031);
-  --secondary-foreground: oklch(0.984 0.003 247.858);
-  --muted: oklch(0.279 0.041 260.031);
-  --muted-foreground: oklch(0.704 0.04 256.788);
-  --accent: oklch(0.279 0.041 260.031);
-  --accent-foreground: oklch(0.984 0.003 247.858);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.551 0.027 264.364);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.208 0.042 265.755);
-  --sidebar-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.279 0.041 260.031);
-  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.551 0.027 264.364);
+  /* Tokens are already on :root in dark-first; this block is a
+     no-op safety net so toggling .dark explicitly never breaks. */
+  color-scheme: dark;
 }
 
 @layer base {
@@ -137,8 +360,963 @@
     border-color: var(--color-border);
   }
 
+  html,
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "ss01", "cv11";
+    color-scheme: dark;
+  }
+
+  html.light,
+  html.light body {
+    color-scheme: light;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    line-height: var(--leading-normal);
+    letter-spacing: var(--tracking-normal);
+    overscroll-behavior-y: none;
+    padding-left: var(--safe-left);
+    padding-right: var(--safe-right);
+  }
+
+  /* Headings — soft-futuristic. Hierarchy comes from rhythm and
+     elevation, NOT only from size. Keep weights modest. */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-sans);
+    color: var(--foreground);
+    text-wrap: balance;
+  }
+  h1 {
+    font-size: var(--text-3xl);
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-tighter);
+    font-weight: 500;
+  }
+  h2 {
+    font-size: var(--text-2xl);
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-tight);
+    font-weight: 500;
+  }
+  h3 {
+    font-size: var(--text-xl);
+    line-height: var(--leading-snug);
+    letter-spacing: var(--tracking-tight);
+    font-weight: 500;
+  }
+  h4 {
+    font-size: var(--text-lg);
+    line-height: var(--leading-snug);
+    letter-spacing: var(--tracking-tight);
+    font-weight: 500;
+  }
+  h5,
+  h6 {
+    font-size: var(--text-md);
+    line-height: var(--leading-snug);
+    font-weight: 500;
+  }
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ring);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  ::selection {
+    background-color: color-mix(in oklab, var(--primary) 32%, transparent);
+    color: var(--foreground);
+  }
+}
+
+/* ============================================================ */
+/* Utility surfaces — composable glass layers.                   */
+/* Phase 4/5 — refined: luminous top-edge, layered depth.        */
+/* ============================================================ */
+
+@utility glass {
+  background-color: color-mix(in oklab, var(--surface-elevated) 68%, transparent);
+  backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid var(--border-soft);
+  position: relative;
+}
+/* Luminous top edge — premium glass highlight. */
+.glass::before,
+.glass-strong::before,
+.glass-assistant::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--foreground) 14%, transparent) 0%,
+    transparent 40%
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+@utility glass-strong {
+  background-color: color-mix(in oklab, var(--surface-floating) 82%, transparent);
+  backdrop-filter: blur(28px) saturate(160%);
+  border: 1px solid var(--border-soft);
+  position: relative;
+}
+
+@utility glass-soft {
+  background-color: color-mix(in oklab, var(--surface-elevated) 46%, transparent);
+  backdrop-filter: blur(12px) saturate(120%);
+}
+
+/* Assistant layer — subtle violet-tinted glass, AI presence. */
+@utility glass-assistant {
+  background-color: color-mix(in oklab, var(--surface-assistant) 76%, transparent);
+  backdrop-filter: blur(24px) saturate(150%);
+  border: 1px solid color-mix(in oklab, var(--intelligence) 22%, transparent);
+  position: relative;
+}
+
+@utility hairline {
+  box-shadow: inset 0 -1px 0 0 var(--border-soft);
+}
+
+@utility font-display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: var(--tracking-tighter);
+}
+
+@utility eyebrow {
+  font-size: var(--text-2xs);
+  font-weight: 500;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+
+/* Interaction primitives — Phase 4/5. */
+@utility tap {
+  transition:
+    transform var(--duration-fast) var(--ease-standard),
+    background-color var(--duration-fast) var(--ease-standard),
+    box-shadow var(--duration-fast) var(--ease-standard),
+    opacity var(--duration-fast) var(--ease-standard);
+  -webkit-tap-highlight-color: transparent;
+}
+@utility tap-press {
+  transform: scale(0.98);
+}
+
+/* Focus ring — accessibility-first, calm, never harsh. */
+@utility focus-ring {
+  outline: none;
+}
+.focus-ring:focus-visible {
+  box-shadow:
+    0 0 0 2px var(--background),
+    0 0 0 4px color-mix(in oklab, var(--primary) 60%, transparent);
+}
+
+/* Interactive surface — composable hover/press + focus. */
+@utility interactive {
+  cursor: pointer;
+  transition:
+    transform var(--duration-base) var(--ease-standard),
+    box-shadow var(--duration-base) var(--ease-standard),
+    background-color var(--duration-fast) var(--ease-standard);
+  -webkit-tap-highlight-color: transparent;
+}
+.interactive:hover {
+  transform: translateY(-1px);
+}
+.interactive:active {
+  transform: scale(0.985);
+}
+.interactive:focus-visible {
+  box-shadow:
+    0 0 0 2px var(--background),
+    0 0 0 4px color-mix(in oklab, var(--primary) 55%, transparent);
+}
+
+/* Glow utilities — apply sparingly. One per screen, max. */
+@utility glow-soft {
+  box-shadow: var(--glow-soft);
+}
+@utility glow-ambient {
+  box-shadow: var(--glow-ambient);
+}
+@utility glow-focal {
+  box-shadow: var(--glow-focal);
+}
+@utility glow-cinematic {
+  box-shadow: var(--glow-cinematic);
+}
+
+/* ============================================================ */
+/* Phase 2/5 — Typography utilities.                             */
+/* Soft-futuristic hierarchy: weight + tracking + rhythm before  */
+/* size. Display variants borrow the serif for editorial accent. */
+/* ============================================================ */
+
+@utility text-display-lg {
+  font-family: var(--font-display);
+  font-size: var(--text-6xl);
+  line-height: var(--leading-tightest);
+  letter-spacing: var(--tracking-tightest);
+  font-weight: 400;
+  text-wrap: balance;
+}
+@utility text-display-md {
+  font-family: var(--font-display);
+  font-size: var(--text-5xl);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tighter);
+  font-weight: 400;
+  text-wrap: balance;
+}
+@utility text-display-sm {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tighter);
+  font-weight: 400;
+  text-wrap: balance;
+}
+
+@utility text-title-lg {
+  font-size: var(--text-3xl);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tighter);
+  font-weight: 500;
+}
+@utility text-title-md {
+  font-size: var(--text-2xl);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  font-weight: 500;
+}
+@utility text-title-sm {
+  font-size: var(--text-xl);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-tight);
+  font-weight: 500;
+}
+
+@utility text-subtitle {
+  font-size: var(--text-lg);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-tight);
+  font-weight: 400;
+  color: var(--muted-foreground);
+}
+@utility text-body {
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  font-weight: 400;
+}
+@utility text-body-strong {
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  font-weight: 500;
+}
+@utility text-caption {
+  font-size: var(--text-xs);
+  line-height: var(--leading-snug);
+  color: var(--muted-foreground);
+}
+@utility text-meta {
+  font-size: var(--text-2xs);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-wide);
+  color: var(--muted-foreground);
+}
+
+/* Numeric — tabular for stats, counters, wallet. */
+@utility numeric {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum", "ss01";
+  letter-spacing: var(--tracking-tight);
+}
+
+/* ============================================================ */
+/* Phase 2/5 — Spacing rhythm + layout containers.               */
+/* ============================================================ */
+
+/* Vertical rhythm — stack children with calm spacing. */
+@utility stack-1 {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+@utility stack-2 {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+@utility stack-3 {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+@utility stack-4 {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+@utility stack-6 {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+@utility stack-8 {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+@utility stack-10 {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-10);
+}
+@utility stack-14 {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-14);
+}
+
+/* Inline rhythm — horizontal flow with consistent gap. */
+@utility row-1 {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+@utility row-2 {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+@utility row-3 {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+@utility row-4 {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+/* Section rhythm — cinematic breathing between blocks. */
+@utility section-pad {
+  padding-block: var(--space-10);
+}
+@utility section-pad-lg {
+  padding-block: var(--space-14);
+}
+@utility section-pad-xl {
+  padding-block: var(--space-20);
+}
+
+/* Content containers — mobile-first reading widths.
+   Page gutter scales gently with viewport. */
+@utility container-page {
+  margin-inline: auto;
+  width: 100%;
+  max-width: var(--container-md);
+  padding-inline: var(--space-4);
+}
+@media (min-width: 640px) {
+  .container-page {
+    padding-inline: var(--space-6);
+  }
+}
+@media (min-width: 1024px) {
+  .container-page {
+    max-width: var(--container-lg);
+    padding-inline: var(--space-8);
+  }
+}
+
+@utility container-narrow {
+  margin-inline: auto;
+  width: 100%;
+  max-width: var(--container-sm);
+  padding-inline: var(--space-4);
+}
+@utility container-wide {
+  margin-inline: auto;
+  width: 100%;
+  max-width: var(--container-xl);
+  padding-inline: var(--space-4);
+}
+@media (min-width: 768px) {
+  .container-wide {
+    padding-inline: var(--space-8);
+  }
+}
+
+/* Safe-area helpers — for the thumb zone. */
+@utility safe-bottom {
+  padding-bottom: var(--safe-bottom);
+}
+@utility safe-top {
+  padding-top: var(--safe-top);
+}
+
+/* ============================================================ */
+/* Phase 3/5 — MOTION SYSTEM                                     */
+/*                                                               */
+/* Cinematic easing + breathing presence + signature motions     */
+/* (Flash wave, Radar scan, AI presence, shimmer, float).        */
+/* Everything degrades gracefully under prefers-reduced-motion   */
+/* via the global rule in @layer base.                           */
+/* ============================================================ */
+
+@theme inline {
+  /* Cinematic easings — extend Phase 1 set. */
+  --ease-cinematic: cubic-bezier(0.16, 1, 0.3, 1); /* long elegant arrival */
+  --ease-soft-out: cubic-bezier(0.33, 1, 0.68, 1);
+  --ease-soft-in: cubic-bezier(0.32, 0, 0.67, 0);
+  --ease-spring: linear(
+    0,
+    0.009,
+    0.035 2.1%,
+    0.139,
+    0.302,
+    0.502 9.9%,
+    0.717,
+    0.928,
+    1.123,
+    1.291,
+    1.42,
+    1.501 26.6%,
+    1.525,
+    1.495 32.6%,
+    1.443 35.4%,
+    1.219 47%,
+    1.107 53.2%,
+    1.013 60.2%,
+    0.971 67%,
+    0.955 71%,
+    0.965 76.5%,
+    1.012 91.9%,
+    1
+  );
+
+  /* Animation durations — alias of duration tokens for keyframes. */
+  --motion-instant: var(--duration-instant);
+  --motion-fast: var(--duration-fast);
+  --motion-base: var(--duration-base);
+  --motion-slow: var(--duration-slow);
+  --motion-slower: var(--duration-slower);
+  --motion-breathe: 4.8s;
+  --motion-scan: 3.2s;
+  --motion-wave: 1.8s;
+  --motion-shimmer: 2.4s;
+  --motion-presence: 5.6s;
+}
+
+/* ----------------- Signature keyframes ----------------- */
+
+/* Breathing — ambient idle for AI/trust/presence indicators. */
+@keyframes breathe {
+  0%,
+  100% {
+    opacity: 0.62;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.015);
+  }
+}
+
+/* AI presence — slow halo pulse. */
+@keyframes ai-presence {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 0 color-mix(in oklab, var(--intelligence) 32%, transparent),
+      0 0 24px -6px color-mix(in oklab, var(--intelligence) 28%, transparent);
+  }
+  50% {
+    box-shadow:
+      0 0 0 6px color-mix(in oklab, var(--intelligence) 12%, transparent),
+      0 0 48px -4px color-mix(in oklab, var(--intelligence) 42%, transparent);
+  }
+}
+
+/* Flash wave — outward ripple for instant feedback / Flash module. */
+@keyframes flash-wave {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.55;
+  }
+  80% {
+    opacity: 0.05;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+/* Radar scan — rotating conic sweep for the Radar module. */
+@keyframes radar-scan {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Radar ping — concentric ring expansion. */
+@keyframes radar-ping {
+  0% {
+    transform: scale(0.4);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+/* Shimmer — premium skeleton sheen. */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Float — subtle Y drift for FAB / floating cards. */
+@keyframes float-soft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+/* Rise — calm entrance for cards/sections. */
+@keyframes rise-in {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade-soft — opacity only, no movement. */
+@keyframes fade-soft {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Glow pulse — accent-aware focal pulse. */
+@keyframes glow-pulse {
+  0%,
+  100% {
+    box-shadow: var(--glow-soft);
+  }
+  50% {
+    box-shadow: var(--glow-ambient);
+  }
+}
+
+/* ----------------- Motion utilities ----------------- */
+
+@utility motion-breathe {
+  animation: breathe var(--motion-breathe) var(--ease-standard) infinite;
+}
+@utility motion-presence {
+  animation: ai-presence var(--motion-presence) var(--ease-cinematic) infinite;
+}
+@utility motion-float {
+  animation: float-soft 5s var(--ease-standard) infinite;
+}
+@utility motion-glow-pulse {
+  animation: glow-pulse 3.6s var(--ease-standard) infinite;
+}
+
+/* Rise-in for elements arriving in the viewport. */
+@utility motion-rise-in {
+  animation: rise-in var(--motion-slow) var(--ease-cinematic) both;
+}
+@utility motion-fade-in {
+  animation: fade-soft var(--motion-base) var(--ease-standard) both;
+}
+
+/* Flash + Radar — module-signature motions. Use as decorative
+   overlays inside FlashCard / RadarCard.
+
+   Markup pattern:
+     <span class="motion-flash-wave" />
+     <span class="motion-radar-scan" />
+     <span class="motion-radar-ping" />
+*/
+@utility motion-flash-wave {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid color-mix(in oklab, var(--warm) 55%, transparent);
+  background: radial-gradient(
+    circle,
+    color-mix(in oklab, var(--warm) 16%, transparent) 0%,
+    transparent 70%
+  );
+  animation: flash-wave var(--motion-wave) var(--ease-cinematic) infinite;
+  pointer-events: none;
+}
+@utility motion-radar-scan {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    color-mix(in oklab, var(--primary) 28%, transparent) 25deg,
+    transparent 60deg,
+    transparent 360deg
+  );
+  animation: radar-scan var(--motion-scan) linear infinite;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+@utility motion-radar-ping {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid color-mix(in oklab, var(--primary) 38%, transparent);
+  animation: radar-ping 2.4s var(--ease-soft-out) infinite;
+  pointer-events: none;
+}
+
+/* Shimmer — apply on a Skeleton element. */
+@utility motion-shimmer {
+  background-image: linear-gradient(
+    100deg,
+    transparent 30%,
+    color-mix(in oklab, var(--foreground) 6%, transparent) 50%,
+    transparent 70%
+  );
+  background-size: 200% 100%;
+  animation: shimmer var(--motion-shimmer) linear infinite;
+}
+
+/* Interaction-driven motion — hover/press refinements. */
+@utility hover-lift {
+  transition:
+    transform var(--duration-base) var(--ease-standard),
+    box-shadow var(--duration-base) var(--ease-standard);
+}
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-elevated);
+}
+@utility press {
+  transition: transform var(--duration-fast) var(--ease-standard);
+}
+.press:active {
+  transform: scale(0.97);
+}
+
+/* Will-change hint — opt-in for animated layers. */
+@utility motion-layer {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Reduced-motion safety net: turn off signature loops, keep state
+   transitions snappy. The global @media rule already shortens
+   durations; this also kills decorative loops outright so they
+   don't waste a frame budget. */
+@media (prefers-reduced-motion: reduce) {
+  .motion-breathe,
+  .motion-presence,
+  .motion-float,
+  .motion-glow-pulse,
+  .motion-flash-wave,
+  .motion-radar-scan,
+  .motion-radar-ping,
+  .motion-shimmer {
+    animation: none !important;
+  }
+}
+
+/* ============================================================ */
+/* Phase 5/5 — RESPONSIVE · PERF · HARMONIZATION                 */
+/*                                                               */
+/* Fluid type, responsive grids, content-visibility for offscreen*/
+/* sections, GPU/effects gating for low-end devices, viewport &  */
+/* safe-area helpers. Everything composes with prior phases.     */
+/* ============================================================ */
+
+@theme inline {
+  /* Fluid type — clamp(min, preferred-vw, max). Used by display
+     headings so heroes scale calmly across mobile → desktop. */
+  --fluid-display-lg: clamp(2.5rem, 4vw + 1.5rem, 4.5rem);
+  --fluid-display-md: clamp(2rem, 3vw + 1.25rem, 3.75rem);
+  --fluid-display-sm: clamp(1.75rem, 2vw + 1.1rem, 3rem);
+  --fluid-title-lg: clamp(1.5rem, 1.4vw + 1rem, 2.25rem);
+  --fluid-title-md: clamp(1.25rem, 1vw + 0.9rem, 1.75rem);
+  --fluid-body: clamp(0.9375rem, 0.2vw + 0.85rem, 1.0625rem);
+}
+
+/* ----------------- Fluid typography utilities ----------------- */
+@utility text-fluid-display-lg {
+  font-family: var(--font-display);
+  font-size: var(--fluid-display-lg);
+  line-height: var(--leading-tightest);
+  letter-spacing: var(--tracking-tightest);
+  font-weight: 400;
+  text-wrap: balance;
+}
+@utility text-fluid-display-md {
+  font-family: var(--font-display);
+  font-size: var(--fluid-display-md);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tighter);
+  font-weight: 400;
+  text-wrap: balance;
+}
+@utility text-fluid-display-sm {
+  font-family: var(--font-display);
+  font-size: var(--fluid-display-sm);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tighter);
+  font-weight: 400;
+  text-wrap: balance;
+}
+@utility text-fluid-title-lg {
+  font-size: var(--fluid-title-lg);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tighter);
+  font-weight: 500;
+}
+@utility text-fluid-title-md {
+  font-size: var(--fluid-title-md);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-tight);
+  font-weight: 500;
+}
+@utility text-fluid-body {
+  font-size: var(--fluid-body);
+  line-height: var(--leading-normal);
+}
+
+/* ----------------- Viewport helpers ---------------------------- */
+@utility h-dvh-full {
+  height: 100dvh;
+}
+@utility min-h-dvh-full {
+  min-height: 100dvh;
+}
+@utility h-svh-full {
+  height: 100svh;
+}
+@utility min-h-svh-full {
+  min-height: 100svh;
+}
+
+/* Center stage — full viewport, safe-area aware. */
+@utility stage-center {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-block: var(--space-10);
+  padding-inline: var(--space-6);
+  padding-top: calc(var(--space-10) + var(--safe-top));
+  padding-bottom: calc(var(--space-10) + var(--safe-bottom));
+}
+
+/* ----------------- Responsive grids ---------------------------- */
+@utility grid-auto-fit-sm {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+  gap: var(--space-4);
+}
+@utility grid-auto-fit-md {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+  gap: var(--space-5);
+}
+@utility grid-auto-fit-lg {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+  gap: var(--space-6);
+}
+
+/* Two-up that collapses below md — common card pattern. */
+@utility grid-2up {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+}
+@media (min-width: 768px) {
+  .grid-2up {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-6);
+  }
+}
+
+/* ----------------- Perf primitives ----------------------------- */
+/* content-visibility: skip rendering offscreen sections until
+   they're near the viewport. Massive win for long feeds. */
+@utility cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 480px;
+}
+@utility cv-short {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 240px;
+}
+@utility cv-tall {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 720px;
+}
+
+/* Promote a layer only when it actually animates. Don't sprinkle. */
+@utility gpu-layer {
+  transform: translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* Responsive images — never push layout, never overscale. */
+@utility img-fluid {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+@utility img-cover {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Scroll snap rails — used by horizontal carousels on mobile. */
+@utility snap-x-rail {
+  display: flex;
+  overflow-x: auto;
+  gap: var(--space-3);
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  scroll-padding-inline: var(--space-4);
+}
+.snap-x-rail::-webkit-scrollbar {
+  display: none;
+}
+.snap-x-rail > * {
+  scroll-snap-align: start;
+  flex: 0 0 auto;
+}
+
+/* ----------------- Low-end & data-saver gating ----------------- */
+/* Apply `.low-end` on <html> to disable expensive effects
+   (set by useResponsive consumers, or by prefers-reduced-data). */
+.low-end .glass,
+.low-end .glass-strong,
+.low-end .glass-soft,
+.low-end .glass-assistant {
+  backdrop-filter: none !important;
+  background-color: var(--surface-elevated);
+}
+.low-end .glow-soft,
+.low-end .glow-ambient,
+.low-end .glow-focal,
+.low-end .glow-cinematic {
+  box-shadow: var(--shadow-soft) !important;
+}
+.low-end .motion-breathe,
+.low-end .motion-presence,
+.low-end .motion-float,
+.low-end .motion-glow-pulse,
+.low-end .motion-flash-wave,
+.low-end .motion-radar-scan,
+.low-end .motion-radar-ping,
+.low-end .motion-shimmer {
+  animation: none !important;
+}
+
+@media (prefers-reduced-data: reduce) {
+  .glass,
+  .glass-strong,
+  .glass-soft,
+  .glass-assistant {
+    backdrop-filter: none !important;
+  }
+}
+
+/* ----------------- App shell harmonization --------------------- */
+/* Standard page wrapper — every route's top-level should use this
+   (or `container-page`). Provides consistent rhythm + safe area. */
+@utility page-shell {
+  margin-inline: auto;
+  width: 100%;
+  max-width: var(--container-md);
+  padding-inline: var(--space-4);
+  padding-top: calc(var(--space-6) + var(--safe-top));
+  padding-bottom: calc(var(--space-24) + var(--safe-bottom));
+}
+@media (min-width: 640px) {
+  .page-shell {
+    padding-inline: var(--space-6);
+  }
+}
+@media (min-width: 1024px) {
+  .page-shell {
+    max-width: var(--container-lg);
+    padding-inline: var(--space-8);
   }
 }

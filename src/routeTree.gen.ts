@@ -9,38 +9,264 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TalentsRouteImport } from './routes/talents'
+import { Route as ResetPasswordRouteImport } from './routes/reset-password'
+import { Route as RadarRouteImport } from './routes/radar'
+import { Route as FlashRouteImport } from './routes/flash'
+import { Route as EspaceRouteImport } from './routes/espace'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ApiHealthRouteImport } from './routes/api/health'
+import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
+import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin.index'
+import { Route as ApiSyncPushRouteImport } from './routes/api/sync/push'
+import { Route as ApiSyncPullRouteImport } from './routes/api/sync/pull'
+import { Route as ApiPublicAssistantRouteImport } from './routes/api/public/assistant'
+import { Route as AuthenticatedAdminModuleRouteImport } from './routes/_authenticated/admin.$module'
 
+const TalentsRoute = TalentsRouteImport.update({
+  id: '/talents',
+  path: '/talents',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResetPasswordRoute = ResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RadarRoute = RadarRouteImport.update({
+  id: '/radar',
+  path: '/radar',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FlashRoute = FlashRouteImport.update({
+  id: '/flash',
+  path: '/flash',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EspaceRoute = EspaceRouteImport.update({
+  id: '/espace',
+  path: '/espace',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiHealthRoute = ApiHealthRouteImport.update({
+  id: '/api/health',
+  path: '/api/health',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedAdminIndexRoute = AuthenticatedAdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AuthenticatedAdminRoute,
+} as any)
+const ApiSyncPushRoute = ApiSyncPushRouteImport.update({
+  id: '/api/sync/push',
+  path: '/api/sync/push',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiSyncPullRoute = ApiSyncPullRouteImport.update({
+  id: '/api/sync/pull',
+  path: '/api/sync/pull',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicAssistantRoute = ApiPublicAssistantRouteImport.update({
+  id: '/api/public/assistant',
+  path: '/api/public/assistant',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedAdminModuleRoute =
+  AuthenticatedAdminModuleRouteImport.update({
+    id: '/$module',
+    path: '/$module',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/espace': typeof EspaceRoute
+  '/flash': typeof FlashRoute
+  '/radar': typeof RadarRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/talents': typeof TalentsRoute
+  '/admin': typeof AuthenticatedAdminRouteWithChildren
+  '/api/health': typeof ApiHealthRoute
+  '/admin/$module': typeof AuthenticatedAdminModuleRoute
+  '/api/public/assistant': typeof ApiPublicAssistantRoute
+  '/api/sync/pull': typeof ApiSyncPullRoute
+  '/api/sync/push': typeof ApiSyncPushRoute
+  '/admin/': typeof AuthenticatedAdminIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/espace': typeof EspaceRoute
+  '/flash': typeof FlashRoute
+  '/radar': typeof RadarRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/talents': typeof TalentsRoute
+  '/api/health': typeof ApiHealthRoute
+  '/admin/$module': typeof AuthenticatedAdminModuleRoute
+  '/api/public/assistant': typeof ApiPublicAssistantRoute
+  '/api/sync/pull': typeof ApiSyncPullRoute
+  '/api/sync/push': typeof ApiSyncPushRoute
+  '/admin': typeof AuthenticatedAdminIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/auth': typeof AuthRoute
+  '/espace': typeof EspaceRoute
+  '/flash': typeof FlashRoute
+  '/radar': typeof RadarRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/talents': typeof TalentsRoute
+  '/_authenticated/admin': typeof AuthenticatedAdminRouteWithChildren
+  '/api/health': typeof ApiHealthRoute
+  '/_authenticated/admin/$module': typeof AuthenticatedAdminModuleRoute
+  '/api/public/assistant': typeof ApiPublicAssistantRoute
+  '/api/sync/pull': typeof ApiSyncPullRoute
+  '/api/sync/push': typeof ApiSyncPushRoute
+  '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/espace'
+    | '/flash'
+    | '/radar'
+    | '/reset-password'
+    | '/talents'
+    | '/admin'
+    | '/api/health'
+    | '/admin/$module'
+    | '/api/public/assistant'
+    | '/api/sync/pull'
+    | '/api/sync/push'
+    | '/admin/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/auth'
+    | '/espace'
+    | '/flash'
+    | '/radar'
+    | '/reset-password'
+    | '/talents'
+    | '/api/health'
+    | '/admin/$module'
+    | '/api/public/assistant'
+    | '/api/sync/pull'
+    | '/api/sync/push'
+    | '/admin'
+  id:
+    | '__root__'
+    | '/'
+    | '/_authenticated'
+    | '/auth'
+    | '/espace'
+    | '/flash'
+    | '/radar'
+    | '/reset-password'
+    | '/talents'
+    | '/_authenticated/admin'
+    | '/api/health'
+    | '/_authenticated/admin/$module'
+    | '/api/public/assistant'
+    | '/api/sync/pull'
+    | '/api/sync/push'
+    | '/_authenticated/admin/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  AuthRoute: typeof AuthRoute
+  EspaceRoute: typeof EspaceRoute
+  FlashRoute: typeof FlashRoute
+  RadarRoute: typeof RadarRoute
+  ResetPasswordRoute: typeof ResetPasswordRoute
+  TalentsRoute: typeof TalentsRoute
+  ApiHealthRoute: typeof ApiHealthRoute
+  ApiPublicAssistantRoute: typeof ApiPublicAssistantRoute
+  ApiSyncPullRoute: typeof ApiSyncPullRoute
+  ApiSyncPushRoute: typeof ApiSyncPushRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/talents': {
+      id: '/talents'
+      path: '/talents'
+      fullPath: '/talents'
+      preLoaderRoute: typeof TalentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reset-password': {
+      id: '/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/radar': {
+      id: '/radar'
+      path: '/radar'
+      fullPath: '/radar'
+      preLoaderRoute: typeof RadarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/flash': {
+      id: '/flash'
+      path: '/flash'
+      fullPath: '/flash'
+      preLoaderRoute: typeof FlashRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/espace': {
+      id: '/espace'
+      path: '/espace'
+      fullPath: '/espace'
+      preLoaderRoute: typeof EspaceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +274,95 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/health': {
+      id: '/api/health'
+      path: '/api/health'
+      fullPath: '/api/health'
+      preLoaderRoute: typeof ApiHealthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/admin': {
+      id: '/_authenticated/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AuthenticatedAdminRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/admin/': {
+      id: '/_authenticated/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AuthenticatedAdminIndexRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/api/sync/push': {
+      id: '/api/sync/push'
+      path: '/api/sync/push'
+      fullPath: '/api/sync/push'
+      preLoaderRoute: typeof ApiSyncPushRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/sync/pull': {
+      id: '/api/sync/pull'
+      path: '/api/sync/pull'
+      fullPath: '/api/sync/pull'
+      preLoaderRoute: typeof ApiSyncPullRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/assistant': {
+      id: '/api/public/assistant'
+      path: '/api/public/assistant'
+      fullPath: '/api/public/assistant'
+      preLoaderRoute: typeof ApiPublicAssistantRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/admin/$module': {
+      id: '/_authenticated/admin/$module'
+      path: '/$module'
+      fullPath: '/admin/$module'
+      preLoaderRoute: typeof AuthenticatedAdminModuleRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
   }
 }
 
+interface AuthenticatedAdminRouteChildren {
+  AuthenticatedAdminModuleRoute: typeof AuthenticatedAdminModuleRoute
+  AuthenticatedAdminIndexRoute: typeof AuthenticatedAdminIndexRoute
+}
+
+const AuthenticatedAdminRouteChildren: AuthenticatedAdminRouteChildren = {
+  AuthenticatedAdminModuleRoute: AuthenticatedAdminModuleRoute,
+  AuthenticatedAdminIndexRoute: AuthenticatedAdminIndexRoute,
+}
+
+const AuthenticatedAdminRouteWithChildren =
+  AuthenticatedAdminRoute._addFileChildren(AuthenticatedAdminRouteChildren)
+
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAdminRoute: typeof AuthenticatedAdminRouteWithChildren
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAdminRoute: AuthenticatedAdminRouteWithChildren,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  AuthRoute: AuthRoute,
+  EspaceRoute: EspaceRoute,
+  FlashRoute: FlashRoute,
+  RadarRoute: RadarRoute,
+  ResetPasswordRoute: ResetPasswordRoute,
+  TalentsRoute: TalentsRoute,
+  ApiHealthRoute: ApiHealthRoute,
+  ApiPublicAssistantRoute: ApiPublicAssistantRoute,
+  ApiSyncPullRoute: ApiSyncPullRoute,
+  ApiSyncPushRoute: ApiSyncPushRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

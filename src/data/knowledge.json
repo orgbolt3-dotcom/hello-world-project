@@ -1,0 +1,569 @@
+{
+  "version": 1,
+  "entries": [
+    {
+      "id": "about-01",
+      "locale": "fr",
+      "category": "presentation",
+      "questions": ["Qu'est-ce que Vitala ?", "À quoi sert Vitala ?"],
+      "keywords": ["vitala", "application", "entraide", "proximite"],
+      "answer": "Vitala aide à trouver ou proposer une aide, un service ou une information utile près de soi. L’application privilégie les échanges locaux, simples et rapides.",
+      "version": 1
+    },
+    {
+      "id": "about-02",
+      "locale": "fr",
+      "category": "presentation",
+      "questions": ["Qui est Vita ?", "C'est quoi l'assistant Vita ?"],
+      "keywords": ["vita", "assistant", "guide"],
+      "answer": "Vita est le guide de Vitala. Il vous accueille, explique les fonctions et vous aide à choisir entre Flash, Scan et Radar.",
+      "version": 1
+    },
+    {
+      "id": "about-03",
+      "locale": "fr",
+      "category": "presentation",
+      "questions": ["Vitala est-il gratuit ?", "Est-ce gratuit ?"],
+      "keywords": ["gratuit", "prix", "cout"],
+      "answer": "La découverte et plusieurs fonctions de base sont gratuites. Certaines mises en relation ou fonctions avancées pourront demander de petits frais clairement affichés avant confirmation.",
+      "version": 1
+    },
+    {
+      "id": "account-01",
+      "locale": "fr",
+      "category": "compte",
+      "questions": ["Puis-je utiliser Vitala sans compte ?", "Peut-on visiter sans s'inscrire ?"],
+      "keywords": ["visiteur", "sans compte", "consultant"],
+      "answer": "Oui. Un visiteur peut découvrir l’application et consulter les informations publiques, mais il doit créer un compte pour interagir ou contacter quelqu’un.",
+      "version": 1
+    },
+    {
+      "id": "account-02",
+      "locale": "fr",
+      "category": "compte",
+      "questions": ["Comment créer un compte ?", "Comment m'inscrire ?"],
+      "keywords": ["inscription", "creer", "compte"],
+      "answer": "Ouvrez la page de connexion, choisissez l’inscription puis suivez les courtes étapes proposées. Vita peut vous guider sans long formulaire.",
+      "version": 1
+    },
+    {
+      "id": "account-03",
+      "locale": "fr",
+      "category": "compte",
+      "questions": ["Pourquoi compléter mon profil ?", "À quoi sert le profil ?"],
+      "keywords": ["profil", "completer", "identite"],
+      "answer": "Un profil mieux complété facilite les échanges et augmente la confiance. Vitala ne demande que les informations utiles à votre niveau d’utilisation.",
+      "version": 1
+    },
+    {
+      "id": "account-04",
+      "locale": "fr",
+      "category": "compte",
+      "questions": ["Quels sont les niveaux de compte ?", "Comment progresser dans Vitala ?"],
+      "keywords": ["niveau", "enregistre", "verifie", "pro"],
+      "answer": "La progression va du visiteur au membre enregistré, puis au membre vérifié ou confirmé et enfin au niveau Pro selon les conditions applicables.",
+      "version": 1
+    },
+    {
+      "id": "account-05",
+      "locale": "fr",
+      "category": "compte",
+      "questions": ["Puis-je modifier mon profil ?", "Comment changer mon nom ou ma langue ?"],
+      "keywords": ["modifier", "profil", "nom", "langue"],
+      "answer": "Oui. Les informations personnelles modifiables se trouvent dans votre profil. Les champs de confiance et de vérification sont protégés par Vitala.",
+      "version": 1
+    },
+    {
+      "id": "trust-01",
+      "locale": "fr",
+      "category": "confiance",
+      "questions": ["Comment fonctionne la confiance ?", "C'est quoi le statut de confiance ?"],
+      "keywords": ["confiance", "statut", "reputation"],
+      "answer": "Vitala utilise des statuts de confiance et non des étoiles. Ils reflètent notamment la vérification, l’activité et les validations obtenues après les échanges.",
+      "version": 1
+    },
+    {
+      "id": "trust-02",
+      "locale": "fr",
+      "category": "confiance",
+      "questions": ["Comment devenir vérifié ?", "Comment vérifier mon identité ?"],
+      "keywords": ["verifie", "identite", "udi"],
+      "answer": "La vérification suit un parcours sécurisé dans votre profil. Les documents sensibles ne doivent jamais être envoyés dans une conversation publique ni à Vita.",
+      "version": 1
+    },
+    {
+      "id": "trust-03",
+      "locale": "fr",
+      "category": "confiance",
+      "questions": ["Peut-on modifier son score de confiance ?", "Puis-je changer mon statut ?"],
+      "keywords": ["score", "changer", "statut", "confiance"],
+      "answer": "Non. Les niveaux et champs de confiance sont calculés ou validés par le système afin d’éviter les manipulations.",
+      "version": 1
+    },
+    {
+      "id": "trust-04",
+      "locale": "fr",
+      "category": "confiance",
+      "questions": ["Comment recommander une personne ?", "Comment créer de la confiance ?"],
+      "keywords": ["recommander", "validation", "resultat"],
+      "answer": "La confiance se crée après une interaction réelle : le résultat est d’abord validé, puis les mécanismes de recommandation prévus peuvent s’appliquer.",
+      "version": 1
+    },
+    {
+      "id": "flash-01",
+      "locale": "fr",
+      "category": "flash",
+      "questions": ["C'est quoi un Flash ?", "À quoi sert Flash ?"],
+      "keywords": ["flash", "besoin", "court", "annonce"],
+      "answer": "Flash sert aux besoins immédiats ou de courte durée. Vous publiez une demande concise qui devient visible rapidement autour de vous.",
+      "version": 1
+    },
+    {
+      "id": "flash-02",
+      "locale": "fr",
+      "category": "flash",
+      "questions": ["Comment publier un Flash ?", "Comment enregistrer un besoin rapide ?"],
+      "keywords": ["publier", "flash", "besoin"],
+      "answer": "Ouvrez Flash, choisissez « Enregistrer un besoin », décrivez simplement votre demande puis confirmez sa durée et sa zone.",
+      "version": 1
+    },
+    {
+      "id": "flash-03",
+      "locale": "fr",
+      "category": "flash",
+      "questions": ["Combien de temps dure un Flash ?", "Quand expire mon Flash ?"],
+      "keywords": ["duree", "expire", "heure", "flash"],
+      "answer": "Un Flash est temporaire. Sa durée dépend de l’option choisie, par exemple 1 h, 3 h, 5 h ou 10 h.",
+      "version": 1
+    },
+    {
+      "id": "flash-04",
+      "locale": "fr",
+      "category": "flash",
+      "questions": ["Puis-je archiver un Flash ?", "Comment arrêter mon annonce ?"],
+      "keywords": ["archiver", "arreter", "flash"],
+      "answer": "Oui. Vous pouvez archiver ou retirer votre propre Flash lorsqu’il n’est plus utile.",
+      "version": 1
+    },
+    {
+      "id": "scan-01",
+      "locale": "fr",
+      "category": "scan",
+      "questions": ["C'est quoi Scan ?", "À quoi sert le scanner ?"],
+      "keywords": ["scan", "scanner", "autour", "besoin"],
+      "answer": "Scan recherche les besoins et propositions proches disponibles maintenant ou dans les deux prochains jours.",
+      "version": 1
+    },
+    {
+      "id": "scan-02",
+      "locale": "fr",
+      "category": "scan",
+      "questions": ["Pourquoi Scan ne trouve rien ?", "Aucun résultat autour de moi"],
+      "keywords": ["scan", "aucun", "resultat", "suggestion"],
+      "answer": "Élargissez légèrement la zone ou reformulez le besoin. Vitala peut aussi proposer de créer une veille Radar si rien n’est disponible immédiatement.",
+      "version": 1
+    },
+    {
+      "id": "scan-03",
+      "locale": "fr",
+      "category": "scan",
+      "questions": [
+        "Scan utilise-t-il seulement la distance ?",
+        "Comment les résultats sont classés ?"
+      ],
+      "keywords": ["scan", "distance", "classement", "proximite"],
+      "answer": "Non. La proximité compte, mais Vitala considère aussi l’intention, la disponibilité, la pertinence et les règles de confiance.",
+      "version": 1
+    },
+    {
+      "id": "radar-01",
+      "locale": "fr",
+      "category": "radar",
+      "questions": ["C'est quoi Radar ?", "À quoi sert le Radar ?"],
+      "keywords": ["radar", "mission", "veille", "longue"],
+      "answer": "Radar sert aux recherches programmées qui demandent plus de temps. Il surveille une zone et peut vous prévenir lorsqu’une réponse pertinente apparaît.",
+      "version": 1
+    },
+    {
+      "id": "radar-02",
+      "locale": "fr",
+      "category": "radar",
+      "questions": ["Combien de temps dure une veille Radar ?", "Durée maximale du Radar"],
+      "keywords": ["radar", "duree", "trois mois", "veille"],
+      "answer": "Une veille Radar peut durer jusqu’à trois mois. Elle est régulièrement revalidée afin d’éviter les recherches abandonnées.",
+      "version": 1
+    },
+    {
+      "id": "radar-03",
+      "locale": "fr",
+      "category": "radar",
+      "questions": ["Comment relancer un Radar ?", "Ma veille est arrêtée"],
+      "keywords": ["radar", "relancer", "veille"],
+      "answer": "Ouvrez la mission Radar concernée puis choisissez la relance si elle est encore autorisée. Vérifiez aussi la zone et les critères demandés.",
+      "version": 1
+    },
+    {
+      "id": "mission-01",
+      "locale": "fr",
+      "category": "missions",
+      "questions": ["Comment créer une mission ?", "Je veux programmer un besoin"],
+      "keywords": ["mission", "creer", "programmer"],
+      "answer": "Créez une mission depuis Radar en indiquant le besoin, la zone, le délai et les éventuelles conditions utiles.",
+      "version": 1
+    },
+    {
+      "id": "mission-02",
+      "locale": "fr",
+      "category": "missions",
+      "questions": ["Quels sont les états d'une mission ?", "Comment avance une mission ?"],
+      "keywords": ["mission", "etat", "statut"],
+      "answer": "Une mission passe normalement de ouverte à attribuée, en cours, en attente de validation puis terminée. Elle peut aussi être annulée ou contestée.",
+      "version": 1
+    },
+    {
+      "id": "mission-03",
+      "locale": "fr",
+      "category": "missions",
+      "questions": ["Qui peut terminer une mission ?", "Comment valider le résultat ?"],
+      "keywords": ["mission", "terminer", "valider", "resultat"],
+      "answer": "L’intervenant soumet le résultat, puis l’auteur de la mission le valide. Cette séparation protège les deux participants.",
+      "version": 1
+    },
+    {
+      "id": "mission-04",
+      "locale": "fr",
+      "category": "missions",
+      "questions": ["Puis-je modifier une mission attribuée ?", "Changer une mission en cours"],
+      "keywords": ["mission", "modifier", "attribuee"],
+      "answer": "Les détails essentiels sont verrouillés après attribution. Cela empêche de changer les conditions pendant l’exécution.",
+      "version": 1
+    },
+    {
+      "id": "mission-05",
+      "locale": "fr",
+      "category": "missions",
+      "questions": ["Comment contester une mission ?", "Il y a un problème avec la mission"],
+      "keywords": ["mission", "contester", "litige", "probleme"],
+      "answer": "Utilisez l’action de contestation disponible sur la mission. Conservez les échanges dans Vitala afin de garder une trace utile.",
+      "version": 1
+    },
+    {
+      "id": "location-01",
+      "locale": "fr",
+      "category": "localisation",
+      "questions": ["Pourquoi Vitala demande ma position ?", "À quoi sert le GPS ?"],
+      "keywords": ["gps", "position", "localisation"],
+      "answer": "La position aide à proposer des résultats pertinents près de vous. Vitala doit demander votre autorisation avant d’utiliser la géolocalisation.",
+      "version": 1
+    },
+    {
+      "id": "location-02",
+      "locale": "fr",
+      "category": "localisation",
+      "questions": ["Ma position est-elle visible ?", "Les autres voient-ils mon adresse ?"],
+      "keywords": ["position", "visible", "adresse", "confidentialite"],
+      "answer": "Votre adresse précise ne doit pas être exposée publiquement. L’application privilégie une zone approximative et applique les règles d’accès prévues.",
+      "version": 1
+    },
+    {
+      "id": "location-03",
+      "locale": "fr",
+      "category": "localisation",
+      "questions": [
+        "Puis-je utiliser Vitala sans GPS ?",
+        "Que faire si je refuse la localisation ?"
+      ],
+      "keywords": ["sans gps", "refuser", "localisation"],
+      "answer": "Oui, certaines fonctions restent disponibles. Vous pourrez choisir une zone manuellement, mais les résultats de proximité seront moins précis.",
+      "version": 1
+    },
+    {
+      "id": "offline-01",
+      "locale": "fr",
+      "category": "offline",
+      "questions": [
+        "Vitala fonctionne-t-il hors ligne ?",
+        "Puis-je utiliser Vitala sans connexion ?"
+      ],
+      "keywords": ["hors ligne", "offline", "connexion"],
+      "answer": "Oui. Les écrans et données déjà disponibles restent accessibles, et certaines actions sont gardées sur l’appareil jusqu’au retour du réseau.",
+      "version": 1
+    },
+    {
+      "id": "offline-02",
+      "locale": "fr",
+      "category": "offline",
+      "questions": [
+        "Quand mes actions sont-elles synchronisées ?",
+        "Mes données hors ligne sont-elles perdues ?"
+      ],
+      "keywords": ["synchronisation", "hors ligne", "perdu"],
+      "answer": "Elles sont conservées dans une file locale sécurisée puis envoyées lorsque la connexion et votre session sont disponibles.",
+      "version": 1
+    },
+    {
+      "id": "offline-03",
+      "locale": "fr",
+      "category": "offline",
+      "questions": ["Vita fonctionne-t-il hors ligne ?", "L'assistant marche sans réseau ?"],
+      "keywords": ["vita", "assistant", "offline", "hors ligne"],
+      "answer": "Oui pour les questions couvertes par la base locale. Les demandes plus complexes attendent une connexion ou reçoivent une suggestion locale de secours.",
+      "version": 1
+    },
+    {
+      "id": "pwa-01",
+      "locale": "fr",
+      "category": "installation",
+      "questions": ["Comment installer Vitala ?", "Mettre Vitala sur mon téléphone"],
+      "keywords": ["installer", "pwa", "telephone", "ecran accueil"],
+      "answer": "Ouvrez Vitala dans votre navigateur puis choisissez « Installer » ou « Ajouter à l’écran d’accueil » lorsque cette option apparaît.",
+      "version": 1
+    },
+    {
+      "id": "pwa-02",
+      "locale": "fr",
+      "category": "installation",
+      "questions": [
+        "Dois-je télécharger Vitala dans un store ?",
+        "Vitala est-il dans Play Store ?"
+      ],
+      "keywords": ["store", "telecharger", "installer"],
+      "answer": "La version PWA peut s’installer directement depuis le navigateur sans passer obligatoirement par une boutique d’applications.",
+      "version": 1
+    },
+    {
+      "id": "notification-01",
+      "locale": "fr",
+      "category": "notifications",
+      "questions": ["Où sont mes notifications ?", "Comment voir mes alertes ?"],
+      "keywords": ["notification", "alerte", "cloche"],
+      "answer": "Touchez l’icône cloche du header puis ouvrez l’onglet Notifications.",
+      "version": 1
+    },
+    {
+      "id": "notification-02",
+      "locale": "fr",
+      "category": "notifications",
+      "questions": ["Pourquoi activer les notifications ?", "À quoi servent les alertes ?"],
+      "keywords": ["notification", "activer", "alerte"],
+      "answer": "Elles préviennent lorsqu’une réponse, une mission ou une veille Radar demande votre attention. Vous gardez le contrôle des autorisations.",
+      "version": 1
+    },
+    {
+      "id": "contact-01",
+      "locale": "fr",
+      "category": "contact",
+      "questions": ["Comment contacter quelqu'un ?", "Puis-je envoyer un message privé ?"],
+      "keywords": ["contact", "message", "discussion"],
+      "answer": "Les échanges sont liés à un besoin public ou une mission active. Vitala ne prévoit pas de messagerie directe libre sans contexte.",
+      "version": 1
+    },
+    {
+      "id": "contact-02",
+      "locale": "fr",
+      "category": "contact",
+      "questions": ["Un professionnel peut-il donner son WhatsApp ?", "Puis-je appeler un Pro ?"],
+      "keywords": ["pro", "whatsapp", "appel", "contact"],
+      "answer": "Un professionnel peut proposer un appel ou un lien WhatsApp lorsque son niveau et les règles de la publication l’autorisent.",
+      "version": 1
+    },
+    {
+      "id": "contact-03",
+      "locale": "fr",
+      "category": "contact",
+      "questions": ["Pourquoi je ne peux plus répondre ?", "Le quota de réponses est atteint"],
+      "keywords": ["quota", "reponse", "prive"],
+      "answer": "Le créateur peut limiter le nombre de réponses. Lorsque le quota est atteint, l’opportunité devient privée pour protéger la qualité des échanges.",
+      "version": 1
+    },
+    {
+      "id": "payment-01",
+      "locale": "fr",
+      "category": "paiement",
+      "questions": ["Comment payer sur Vitala ?", "Quels paiements sont acceptés ?"],
+      "keywords": ["paiement", "mobile money", "payer"],
+      "answer": "Les fonctions payantes prévues utilisent principalement le mobile money. Le montant doit toujours être affiché avant votre confirmation.",
+      "version": 1
+    },
+    {
+      "id": "payment-02",
+      "locale": "fr",
+      "category": "paiement",
+      "questions": ["Vitala garde-t-il mon argent ?", "Où va le paiement ?"],
+      "keywords": ["argent", "fonds", "paiement"],
+      "answer": "Vitala n’a pas vocation à conserver les fonds des échanges. Les paiements entre participants restent directs selon le mécanisme prévu.",
+      "version": 1
+    },
+    {
+      "id": "payment-03",
+      "locale": "fr",
+      "category": "paiement",
+      "questions": ["Pourquoi la mise en relation est payante ?", "Combien coûte un contact ?"],
+      "keywords": ["mise en relation", "cout", "contact"],
+      "answer": "Certains contacts peuvent coûter quelques centimes pour financer le service et limiter les abus. Le prix exact doit être indiqué avant l’action.",
+      "version": 1
+    },
+    {
+      "id": "pro-01",
+      "locale": "fr",
+      "category": "professionnels",
+      "questions": ["Comment devenir Pro ?", "C'est quoi un compte Pro ?"],
+      "keywords": ["pro", "professionnel", "compte"],
+      "answer": "Le niveau Pro est destiné aux professionnels remplissant les conditions demandées. Il donne accès à des privilèges et espaces spécifiques.",
+      "version": 1
+    },
+    {
+      "id": "pro-02",
+      "locale": "fr",
+      "category": "professionnels",
+      "questions": ["Qu'est-ce qu'un espace ?", "À quoi sert Espace ?"],
+      "keywords": ["espace", "pro", "commerce"],
+      "answer": "Espace permet de présenter une activité, une communauté ou des propositions structurées. Ses fonctions avancées arrivent progressivement.",
+      "version": 1
+    },
+    {
+      "id": "referral-01",
+      "locale": "fr",
+      "category": "parrainage",
+      "questions": ["Comment parrainer quelqu'un ?", "Où trouver mon code parrain ?"],
+      "keywords": ["parrain", "code", "invitation"],
+      "answer": "Le parrainage utilisera un code personnel disponible dans votre espace lorsqu’il sera activé pour votre compte.",
+      "version": 1
+    },
+    {
+      "id": "referral-02",
+      "locale": "fr",
+      "category": "parrainage",
+      "questions": ["Le parrainage donne-t-il des points ?", "Comment gagner des points ?"],
+      "keywords": ["parrainage", "points", "gain"],
+      "answer": "Des points peuvent être accordés lorsqu’un parrainage remplit les conditions prévues, notamment pour certaines souscriptions ou fonctions Pro.",
+      "version": 1
+    },
+    {
+      "id": "safety-01",
+      "locale": "fr",
+      "category": "securite",
+      "questions": ["Comment signaler un abus ?", "Je veux signaler quelqu'un"],
+      "keywords": ["signaler", "abus", "fraude", "danger"],
+      "answer": "Utilisez l’action Signaler associée au contenu ou à l’échange. En cas de danger immédiat, contactez d’abord les services compétents de votre zone.",
+      "version": 1
+    },
+    {
+      "id": "safety-02",
+      "locale": "fr",
+      "category": "securite",
+      "questions": [
+        "Que ne dois-je pas envoyer à Vita ?",
+        "Puis-je envoyer mes documents à l'assistant ?"
+      ],
+      "keywords": ["document", "mot de passe", "secret", "vita"],
+      "answer": "N’envoyez jamais à Vita de mot de passe, code mobile money, pièce d’identité complète, numéro secret ou document confidentiel.",
+      "version": 1
+    },
+    {
+      "id": "safety-03",
+      "locale": "fr",
+      "category": "securite",
+      "questions": [
+        "Comment reconnaître une fraude ?",
+        "Quelqu'un me demande mon code mobile money"
+      ],
+      "keywords": ["fraude", "code", "mobile money", "arnaque"],
+      "answer": "Ne partagez jamais votre code secret et refusez toute validation que vous n’avez pas initiée. Signalez immédiatement le compte ou le contenu concerné.",
+      "version": 1
+    },
+    {
+      "id": "safety-04",
+      "locale": "fr",
+      "category": "securite",
+      "questions": [
+        "Mes données locales sont-elles mélangées ?",
+        "Un autre compte voit-il mes données offline ?"
+      ],
+      "keywords": ["donnees", "offline", "compte", "separation"],
+      "answer": "Chaque compte utilise une base locale séparée. Changer de compte ferme la base active afin d’éviter le mélange des données.",
+      "version": 1
+    },
+    {
+      "id": "navigation-01",
+      "locale": "fr",
+      "category": "navigation",
+      "questions": ["Où publier un besoin urgent ?", "J'ai besoin d'aide maintenant"],
+      "keywords": ["urgent", "maintenant", "flash"],
+      "answer": "Utilisez Flash pour un besoin immédiat ou de courte durée.",
+      "version": 1
+    },
+    {
+      "id": "navigation-02",
+      "locale": "fr",
+      "category": "navigation",
+      "questions": ["Où chercher quelque chose près de moi ?", "Je veux voir autour de moi"],
+      "keywords": ["chercher", "proche", "scan"],
+      "answer": "Ouvrez Scan dans Flash pour rechercher ce qui est disponible autour de vous maintenant.",
+      "version": 1
+    },
+    {
+      "id": "navigation-03",
+      "locale": "fr",
+      "category": "navigation",
+      "questions": ["Où programmer une recherche ?", "Mon besoin peut attendre plusieurs jours"],
+      "keywords": ["programmer", "recherche", "radar"],
+      "answer": "Utilisez Radar pour une recherche sur plusieurs jours ou pour créer une veille.",
+      "version": 1
+    },
+    {
+      "id": "navigation-04",
+      "locale": "fr",
+      "category": "navigation",
+      "questions": ["Comment changer la langue ?", "Vitala existe-t-il en anglais ?"],
+      "keywords": ["langue", "francais", "anglais"],
+      "answer": "Vitala prévoit le français et l’anglais. Le choix de langue se trouve dans les préférences ou le profil.",
+      "version": 1
+    },
+    {
+      "id": "accessibility-01",
+      "locale": "fr",
+      "category": "accessibilite",
+      "questions": [
+        "Vitala convient-il aux personnes qui lisent peu ?",
+        "Existe-t-il un mode simple ?"
+      ],
+      "keywords": ["mode simple", "rural", "lecture", "accessibilite"],
+      "answer": "Vitala prévoit des parcours simples, un langage humain et un accompagnement progressif. Les modes adaptés pourront être choisis dans le profil.",
+      "version": 1
+    },
+    {
+      "id": "privacy-01",
+      "locale": "fr",
+      "category": "confidentialite",
+      "questions": [
+        "Vita mémorise-t-il mes conversations ?",
+        "Mes questions sont-elles publiques ?"
+      ],
+      "keywords": ["conversation", "memoire", "public", "confidentialite"],
+      "answer": "Vos questions ne doivent pas être publiées comme du contenu public. Les métriques d’usage doivent éviter de conserver le texte personnel brut.",
+      "version": 1
+    },
+    {
+      "id": "help-01",
+      "locale": "fr",
+      "category": "aide",
+      "questions": ["Je ne sais pas quelle fonction utiliser", "Peux-tu me guider ?"],
+      "keywords": ["guider", "choisir", "aide"],
+      "answer": "Dites simplement ce que vous cherchez et pour quand. Vita vous orientera vers Flash pour l’immédiat, Scan pour explorer ou Radar pour une veille.",
+      "version": 1
+    },
+    {
+      "id": "help-02",
+      "locale": "fr",
+      "category": "aide",
+      "questions": [
+        "La fonctionnalité n'est pas encore disponible",
+        "Pourquoi c'est marqué bientôt ?"
+      ],
+      "keywords": ["bientot", "indisponible", "fonction"],
+      "answer": "Certaines fonctions sont encore en préparation. Les écrans concernés indiquent clairement leur disponibilité sans simuler une action terminée.",
+      "version": 1
+    }
+  ]
+}

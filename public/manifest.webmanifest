@@ -1,0 +1,31 @@
+{
+  "id": "/",
+  "name": "Écosystème",
+  "short_name": "Écosystème",
+  "description": "Votre écosystème vivant : identités, flash, missions et échanges, même hors connexion.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "orientation": "portrait",
+  "background_color": "#0b0d11",
+  "theme_color": "#0b0d11",
+  "lang": "fr",
+  "dir": "ltr",
+  "categories": ["social", "productivity"],
+  "icons": [
+    { "src": "/icon-192.svg", "sizes": "192x192", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "/icon-512.svg", "sizes": "512x512", "type": "image/svg+xml", "purpose": "any" },
+    {
+      "src": "/icon-maskable-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    { "name": "Flash", "url": "/flash" },
+    { "name": "Radar", "url": "/radar" },
+    { "name": "Espace", "url": "/espace" }
+  ]
+}
