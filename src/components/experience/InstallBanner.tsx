@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Download, X } from "lucide-react";
 import { useInstallPrompt } from "@/platform/pwa";
 import { useI18n } from "@/lib/i18n/useI18n";
+import { Button } from "@/components/ui/button";
 
 /** Gentle invitation to keep the app on the home screen. Presentation only. */
 export function InstallBanner() {
@@ -23,22 +24,25 @@ export function InstallBanner() {
         <div className="min-w-0 flex-1">
           <p className="text-sm font-medium">{t("install.title")}</p>
           <p className="mt-0.5 text-xs text-muted-foreground">{t("install.subtitle")}</p>
-          <button
+          <Button
             type="button"
+            size="sm"
             onClick={() => void install()}
             className="mt-2 inline-flex items-center rounded-lg bg-primary px-3 py-1.5 text-xs font-medium text-primary-foreground transition-opacity hover:opacity-90"
           >
             {t("install.action")}
-          </button>
+          </Button>
         </div>
-        <button
+        <Button
           type="button"
+          variant="ghost"
+          size="icon"
           onClick={() => setDismissed(true)}
           aria-label={t("install.dismiss")}
           className="text-muted-foreground transition-colors hover:text-foreground"
         >
           <X className="size-4" />
-        </button>
+        </Button>
       </div>
     </div>
   );
