@@ -7,6 +7,10 @@ export const Route = createFileRoute("/flash")({
     meta: [
       { title: "Flash — Écosystème" },
       { name: "description", content: "Moments éphémères de l'écosystème." },
+      { property: "og:title", content: "Flash — Écosystème" },
+      { property: "og:description", content: "Moments éphémères de l'écosystème." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
   component: () => (

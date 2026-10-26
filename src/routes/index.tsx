@@ -11,6 +11,8 @@ export const Route = createFileRoute("/")({
           "Un écosystème vivant qui relie les personnes, les talents et les opportunités, avec calme et intelligence.",
       },
       { property: "og:title", content: "Écosystème — Vivant, calme, intelligent" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
       {
         property: "og:description",
         content: "Foundation — orchestration globale, calme et vivante.",

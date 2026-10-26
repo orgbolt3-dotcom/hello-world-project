@@ -8,6 +8,15 @@ import { AdminSystemView } from "@/domains/admin/ui/AdminSystemView";
 import { useAdminOverview, useAdminRecords } from "@/domains/admin/hooks/useAdminData";
 
 export const Route = createFileRoute("/_authenticated/admin/$module")({
+  head: ({ params }) => ({ meta: [
+    { title: `${params.module} — Gestion Écosystème` },
+    { name: "description", content: `Gestion du module ${params.module} de l’écosystème.` },
+    { property: "og:title", content: `${params.module} — Gestion Écosystème` },
+    { property: "og:description", content: `Gestion du module ${params.module} de l’écosystème.` },
+    { property: "og:type", content: "website" },
+    { name: "twitter:card", content: "summary" },
+    { name: "robots", content: "noindex" },
+  ] }),
   beforeLoad: ({ params }) => {
     if (!(MANAGEMENT_MODULES as readonly string[]).includes(params.module)) throw notFound();
   },

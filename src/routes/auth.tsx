@@ -7,6 +7,8 @@ export const Route = createFileRoute("/auth")({
       { title: "Connexion — Écosystème" },
       { name: "description", content: "Rejoignez votre écosystème : identifiez-vous en un geste." },
       { name: "robots", content: "noindex" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
       { property: "og:title", content: "Connexion — Écosystème" },
       { property: "og:description", content: "Identifiez-vous pour retrouver votre écosystème." },
     ],
