@@ -7,6 +7,10 @@ export const Route = createFileRoute("/espace")({
     meta: [
       { title: "Espace — Écosystème" },
       { name: "description", content: "Votre espace personnel." },
+      { property: "og:title", content: "Espace — Écosystème" },
+      { property: "og:description", content: "Votre espace personnel." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
   component: () => (

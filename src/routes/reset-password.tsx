@@ -10,6 +10,8 @@ export const Route = createFileRoute("/reset-password")({
         content: "Choisissez un nouveau mot de passe pour votre compte Vitala.",
       },
       { name: "robots", content: "noindex" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
       { property: "og:title", content: "Nouveau mot de passe — Vitala" },
       {
         property: "og:description",

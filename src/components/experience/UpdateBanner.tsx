@@ -2,6 +2,7 @@ import { useState } from "react";
 import { RefreshCw, X } from "lucide-react";
 import { useAppUpdate } from "@/platform/pwa";
 import { useI18n } from "@/lib/i18n/useI18n";
+import { Button } from "@/components/ui/button";
 
 /** Tells the person a newer version is ready and reloads on demand. */
 export function UpdateBanner() {
@@ -24,23 +25,26 @@ export function UpdateBanner() {
         <div className="min-w-0 flex-1">
           <p className="text-sm font-medium">{t("update.title")}</p>
           <p className="mt-0.5 text-xs text-muted-foreground">{t("update.subtitle")}</p>
-          <button
+          <Button
             type="button"
+            size="sm"
             onClick={apply}
             disabled={applying}
             className="mt-2 inline-flex items-center rounded-lg bg-primary px-3 py-1.5 text-xs font-medium text-primary-foreground transition-opacity hover:opacity-90 disabled:opacity-60"
           >
             {t("update.action")}
-          </button>
+          </Button>
         </div>
-        <button
+        <Button
           type="button"
+          variant="ghost"
+          size="icon"
           onClick={() => setDismissed(true)}
           aria-label={t("update.dismiss")}
           className="text-muted-foreground transition-colors hover:text-foreground"
         >
           <X className="size-4" />
-        </button>
+        </Button>
       </div>
     </div>
   );

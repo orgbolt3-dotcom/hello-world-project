@@ -4,6 +4,7 @@ import type { Session } from "@supabase/supabase-js";
 import { supabase } from "@/integrations/supabase/client";
 import { resetSyncStatus, useSyncStatusStore } from "./sync-status";
 import { activateLocalDataScope, deactivateLocalDataScope } from "./local-scope";
+import { hasClientConnection } from "@/config/env.public";
 
 /**
  * Bridge between the application and the synchronisation worker.
@@ -95,6 +96,11 @@ function applySession(session: Session | null): void {
 export function useSyncEngine(): void {
   useEffect(() => {
     if (!isSupported()) return;
+    if (!hasClientConnection()) {
+      activateLocalDataScope(null);
+      resetSyncStatus();
+      return () => deactivateLocalDataScope();
+    }
 
     let cancelled = false;
     let receivedAuthEvent = false;

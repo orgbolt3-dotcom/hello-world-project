@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import type { Session, User } from "@supabase/supabase-js";
 import { supabase } from "@/integrations/supabase/client";
+import { hasClientConnection } from "@/config/env.public";
 
 /** Reactive session state for the current visitor. SSR-safe (starts empty). */
 export function useAuth() {
@@ -8,6 +9,10 @@ export function useAuth() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    if (!hasClientConnection()) {
+      setLoading(false);
+      return;
+    }
     const { data } = supabase.auth.onAuthStateChange((_event, next) => {
       setSession(next);
       setLoading(false);

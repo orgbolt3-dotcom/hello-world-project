@@ -8,3 +8,9 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+## PWA architecture
+- The public local shell must render without a Cloud connection; skip session subscriptions and network synchronization until public connection configuration exists.
+- Keep a single browser-safe registration wrapper in the PWA platform layer; compatibility barrels must re-export it, so no import path bypasses preview and iframe guards.
+- Generate the published offline worker with vite-plugin-pwa generateSW; use NetworkFirst for public navigations and CacheFirst only for same-origin hashed assets, excluding authentication, APIs and OAuth from caching.
+- The unpublished project's public/sw.js is a same-path cleanup worker for legacy preview caches; production generateSW replaces that output. Never delete unrelated messaging caches or unregister messaging workers.

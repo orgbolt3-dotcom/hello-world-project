@@ -7,6 +7,10 @@ export const Route = createFileRoute("/talents")({
     meta: [
       { title: "Talents — Savoirs Vivants" },
       { name: "description", content: "Connaissances vivantes, échanges humains." },
+      { property: "og:title", content: "Talents — Savoirs Vivants" },
+      { property: "og:description", content: "Connaissances vivantes, échanges humains." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
   component: () => (

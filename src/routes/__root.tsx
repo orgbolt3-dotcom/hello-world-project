@@ -12,7 +12,6 @@ import {
 
 import appCss from "../styles.css?url";
 import { AppShell } from "@/components/app/AppShell";
-import { registerServiceWorker } from "@/platform/pwa";
 import { startWebVitalsMonitoring } from "@/lib/performance/web-vitals";
 
 function NotFoundComponent() {
@@ -85,7 +84,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "theme-color", content: "#0b0d11" },
       { name: "apple-mobile-web-app-capable", content: "yes" },
       { name: "apple-mobile-web-app-status-bar-style", content: "black-translucent" },
-      { name: "apple-mobile-web-app-title", content: "Vitala" },
+      { name: "apple-mobile-web-app-title", content: "Écosystème" },
       { name: "mobile-web-app-capable", content: "yes" },
       { property: "og:title", content: "Vitala — votre réseau d'entraide" },
       {
@@ -124,7 +123,6 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 function RootComponent() {
   useEffect(() => startWebVitalsMonitoring(() => undefined), []);
-  registerServiceWorker();
   const { queryClient } = Route.useRouteContext();
 
   return (

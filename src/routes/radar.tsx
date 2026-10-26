@@ -7,6 +7,10 @@ export const Route = createFileRoute("/radar")({
     meta: [
       { title: "Radar — Écosystème" },
       { name: "description", content: "Ce qui se passe autour de vous." },
+      { property: "og:title", content: "Radar — Écosystème" },
+      { property: "og:description", content: "Ce qui se passe autour de vous." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
   component: () => (

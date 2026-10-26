@@ -28,14 +28,7 @@ export function watchForUpdates(registration: ServiceWorkerRegistration): void {
     });
   });
 
-  // Periodic check so long-lived sessions still learn about new releases.
-  const interval = window.setInterval(
-    () => {
-      void registration.update().catch(() => undefined);
-    },
-    60 * 60 * 1000,
-  );
-  window.addEventListener("pagehide", () => window.clearInterval(interval), { once: true });
+  void registration.update().catch(() => undefined);
 }
 
 export function useAppUpdate() {
@@ -58,12 +51,8 @@ export function useAppUpdate() {
       if (reloaded) return;
       reloaded = true;
       window.location.reload();
-    });
+    }, { once: true });
     waitingWorker.postMessage({ type: "SKIP_WAITING" });
-    // Safety net if the takeover event never arrives.
-    window.setTimeout(() => {
-      if (!reloaded) window.location.reload();
-    }, 3000);
   }
 
   return { ready, applying, apply };

@@ -5,6 +5,7 @@
 import { useEffect, useState } from "react";
 
 import { watchForUpdates } from "./update";
+import { isAppShellWorker, shouldDisableServiceWorker } from "./policy";
 
 interface BeforeInstallPromptEvent extends Event {
   prompt: () => Promise<void>;
@@ -26,22 +27,42 @@ function isStandalone(): boolean {
   );
 }
 
-/** Registers the service worker once, in production builds only. */
+let registrationScheduled = false;
+
+/** One registrar, including cleanup in dev, iframe previews and the kill-switch URL. */
 export function registerServiceWorker(): void {
   if (typeof window === "undefined") return;
   if (!("serviceWorker" in navigator)) return;
-  if (!import.meta.env.PROD) return;
-  window.addEventListener("load", () => {
+  if (shouldDisableServiceWorker({
+    production: import.meta.env.PROD,
+    hostname: window.location.hostname,
+    embedded: window.self !== window.top,
+    search: window.location.search,
+  })) {
+    void navigator.serviceWorker.getRegistrations().then(async (registrations) => {
+      await Promise.allSettled(registrations.filter((registration) =>
+        [registration.active, registration.waiting, registration.installing].some(
+          (worker) => worker && isAppShellWorker(worker.scriptURL, window.location.origin),
+        ),
+      ).map((registration) => registration.unregister()));
+    }).catch(() => undefined);
+    return;
+  }
+  if (registrationScheduled) return;
+  registrationScheduled = true;
+  const register = () => {
     void navigator.serviceWorker
       .register("/sw.js", { scope: "/" })
       .then((registration) => watchForUpdates(registration))
       .catch(() => undefined);
-  });
+  };
+  if (document.readyState === "complete") register();
+  else window.addEventListener("load", register, { once: true });
 }
 
 export function useInstallPrompt() {
   const [available, setAvailable] = useState(deferredPrompt !== null);
-  const [installed, setInstalled] = useState(isStandalone());
+  const [installed, setInstalled] = useState(false);
 
   useEffect(() => {
     const onListener = () => setAvailable(deferredPrompt !== null);
@@ -71,10 +92,11 @@ export function useInstallPrompt() {
 
   async function install(): Promise<"accepted" | "dismissed" | "unavailable"> {
     if (!deferredPrompt) return "unavailable";
-    await deferredPrompt.prompt();
-    const { outcome } = await deferredPrompt.userChoice;
+    const prompt = deferredPrompt;
     deferredPrompt = null;
     notify();
+    await prompt.prompt();
+    const { outcome } = await prompt.userChoice;
     return outcome;
   }
 
