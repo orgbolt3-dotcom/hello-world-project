@@ -3,6 +3,14 @@ export interface ClientEnvironment {
   supabasePublishableKey: string;
 }
 
+/** Imported applications can render their local shell before Cloud is connected. */
+export function hasClientConnection(): boolean {
+  return typeof import.meta.env.VITE_SUPABASE_URL === "string" &&
+    import.meta.env.VITE_SUPABASE_URL.trim().length > 0 &&
+    typeof import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY === "string" &&
+    import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY.trim().length > 0;
+}
+
 function required(value: unknown, name: string): string {
   if (typeof value !== "string" || value.trim().length === 0) {
     throw new Error(`Missing public configuration: ${name}.`);

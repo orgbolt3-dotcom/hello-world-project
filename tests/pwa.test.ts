@@ -1,10 +1,19 @@
 import { describe, expect, it, vi } from "vitest";
 import { registerServiceWorker } from "@/platform/pwa";
 import { isAppShellWorker, shouldDisableServiceWorker } from "@/platform/pwa/policy";
+import { hasClientConnection } from "@/config/env.public";
 
 const published = { production: true, hostname: "entraide.example.com", embedded: false, search: "" };
 
 describe("PWA registration", () => {
+  it("keeps the local shell independent of an absent Cloud connection", () => {
+    vi.stubEnv("VITE_SUPABASE_URL", "");
+    vi.stubEnv("VITE_SUPABASE_PUBLISHABLE_KEY", "");
+    expect(hasClientConnection()).toBe(false);
+    vi.stubEnv("VITE_SUPABASE_URL", "https://example.supabase.co");
+    vi.stubEnv("VITE_SUPABASE_PUBLISHABLE_KEY", "sb_publishable_test");
+    expect(hasClientConnection()).toBe(true);
+  });
   it("exports a browser-safe service worker registration entrypoint", () => {
     expect(registerServiceWorker).toBeTypeOf("function");
   });
