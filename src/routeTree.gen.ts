@@ -14,6 +14,7 @@ import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as EspaceRouteImport } from './routes/espace'
 import { Route as FlashRouteImport } from './routes/flash'
+import { Route as OpportunitesRouteImport } from './routes/opportunites'
 import { Route as RadarRouteImport } from './routes/radar'
 import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as TalentsRouteImport } from './routes/talents'
@@ -22,6 +23,7 @@ import { Route as ApiHealthRouteImport } from './routes/api/health'
 import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin.index'
 import { Route as AuthenticatedAdminModuleRouteImport } from './routes/_authenticated/admin.$module'
 import { Route as ApiPublicAssistantRouteImport } from './routes/api/public/assistant'
+import { Route as ApiPublicOpportunitiesRouteImport } from './routes/api/public/opportunities'
 import { Route as ApiSyncPullRouteImport } from './routes/api/sync/pull'
 import { Route as ApiSyncPushRouteImport } from './routes/api/sync/push'
 
@@ -47,6 +49,11 @@ const EspaceRoute = EspaceRouteImport.update({
 const FlashRoute = FlashRouteImport.update({
   id: '/flash',
   path: '/flash',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OpportunitesRoute = OpportunitesRouteImport.update({
+  id: '/opportunites',
+  path: '/opportunites',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RadarRoute = RadarRouteImport.update({
@@ -90,6 +97,11 @@ const ApiPublicAssistantRoute = ApiPublicAssistantRouteImport.update({
   path: '/api/public/assistant',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicOpportunitiesRoute = ApiPublicOpportunitiesRouteImport.update({
+  id: '/api/public/opportunities',
+  path: '/api/public/opportunities',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiSyncPullRoute = ApiSyncPullRouteImport.update({
   id: '/api/sync/pull',
   path: '/api/sync/pull',
@@ -106,6 +118,7 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/espace': typeof EspaceRoute
   '/flash': typeof FlashRoute
+  '/opportunites': typeof OpportunitesRoute
   '/radar': typeof RadarRoute
   '/reset-password': typeof ResetPasswordRoute
   '/talents': typeof TalentsRoute
@@ -113,6 +126,7 @@ export interface FileRoutesByFullPath {
   '/api/health': typeof ApiHealthRoute
   '/admin/$module': typeof AuthenticatedAdminModuleRoute
   '/api/public/assistant': typeof ApiPublicAssistantRoute
+  '/api/public/opportunities': typeof ApiPublicOpportunitiesRoute
   '/api/sync/pull': typeof ApiSyncPullRoute
   '/api/sync/push': typeof ApiSyncPushRoute
   '/admin/': typeof AuthenticatedAdminIndexRoute
@@ -122,12 +136,14 @@ export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
   '/espace': typeof EspaceRoute
   '/flash': typeof FlashRoute
+  '/opportunites': typeof OpportunitesRoute
   '/radar': typeof RadarRoute
   '/reset-password': typeof ResetPasswordRoute
   '/talents': typeof TalentsRoute
   '/api/health': typeof ApiHealthRoute
   '/admin/$module': typeof AuthenticatedAdminModuleRoute
   '/api/public/assistant': typeof ApiPublicAssistantRoute
+  '/api/public/opportunities': typeof ApiPublicOpportunitiesRoute
   '/api/sync/pull': typeof ApiSyncPullRoute
   '/api/sync/push': typeof ApiSyncPushRoute
   '/admin': typeof AuthenticatedAdminIndexRoute
@@ -139,6 +155,7 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/espace': typeof EspaceRoute
   '/flash': typeof FlashRoute
+  '/opportunites': typeof OpportunitesRoute
   '/radar': typeof RadarRoute
   '/reset-password': typeof ResetPasswordRoute
   '/talents': typeof TalentsRoute
@@ -146,6 +163,7 @@ export interface FileRoutesById {
   '/api/health': typeof ApiHealthRoute
   '/_authenticated/admin/$module': typeof AuthenticatedAdminModuleRoute
   '/api/public/assistant': typeof ApiPublicAssistantRoute
+  '/api/public/opportunities': typeof ApiPublicOpportunitiesRoute
   '/api/sync/pull': typeof ApiSyncPullRoute
   '/api/sync/push': typeof ApiSyncPushRoute
   '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
@@ -157,6 +175,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/espace'
     | '/flash'
+    | '/opportunites'
     | '/radar'
     | '/reset-password'
     | '/talents'
@@ -164,6 +183,7 @@ export interface FileRouteTypes {
     | '/api/health'
     | '/admin/$module'
     | '/api/public/assistant'
+    | '/api/public/opportunities'
     | '/api/sync/pull'
     | '/api/sync/push'
     | '/admin/'
@@ -173,12 +193,14 @@ export interface FileRouteTypes {
     | '/auth'
     | '/espace'
     | '/flash'
+    | '/opportunites'
     | '/radar'
     | '/reset-password'
     | '/talents'
     | '/api/health'
     | '/admin/$module'
     | '/api/public/assistant'
+    | '/api/public/opportunities'
     | '/api/sync/pull'
     | '/api/sync/push'
     | '/admin'
@@ -189,6 +211,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/espace'
     | '/flash'
+    | '/opportunites'
     | '/radar'
     | '/reset-password'
     | '/talents'
@@ -196,6 +219,7 @@ export interface FileRouteTypes {
     | '/api/health'
     | '/_authenticated/admin/$module'
     | '/api/public/assistant'
+    | '/api/public/opportunities'
     | '/api/sync/pull'
     | '/api/sync/push'
     | '/_authenticated/admin/'
@@ -207,11 +231,13 @@ export interface RootRouteChildren {
   AuthRoute: typeof AuthRoute
   EspaceRoute: typeof EspaceRoute
   FlashRoute: typeof FlashRoute
+  OpportunitesRoute: typeof OpportunitesRoute
   RadarRoute: typeof RadarRoute
   ResetPasswordRoute: typeof ResetPasswordRoute
   TalentsRoute: typeof TalentsRoute
   ApiHealthRoute: typeof ApiHealthRoute
   ApiPublicAssistantRoute: typeof ApiPublicAssistantRoute
+  ApiPublicOpportunitiesRoute: typeof ApiPublicOpportunitiesRoute
   ApiSyncPullRoute: typeof ApiSyncPullRoute
   ApiSyncPushRoute: typeof ApiSyncPushRoute
 }
@@ -251,6 +277,13 @@ declare module '@tanstack/react-router' {
       path: '/flash'
       fullPath: '/flash'
       preLoaderRoute: typeof FlashRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/opportunites': {
+      id: '/opportunites'
+      path: '/opportunites'
+      fullPath: '/opportunites'
+      preLoaderRoute: typeof OpportunitesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/radar': {
@@ -309,6 +342,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiPublicAssistantRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/opportunities': {
+      id: '/api/public/opportunities'
+      path: '/api/public/opportunities'
+      fullPath: '/api/public/opportunities'
+      preLoaderRoute: typeof ApiPublicOpportunitiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/sync/pull': {
       id: '/api/sync/pull'
       path: '/api/sync/pull'
@@ -356,11 +396,13 @@ const rootRouteChildren: RootRouteChildren = {
   AuthRoute: AuthRoute,
   EspaceRoute: EspaceRoute,
   FlashRoute: FlashRoute,
+  OpportunitesRoute: OpportunitesRoute,
   RadarRoute: RadarRoute,
   ResetPasswordRoute: ResetPasswordRoute,
   TalentsRoute: TalentsRoute,
   ApiHealthRoute: ApiHealthRoute,
   ApiPublicAssistantRoute: ApiPublicAssistantRoute,
+  ApiPublicOpportunitiesRoute: ApiPublicOpportunitiesRoute,
   ApiSyncPullRoute: ApiSyncPullRoute,
   ApiSyncPushRoute: ApiSyncPushRoute,
 }
