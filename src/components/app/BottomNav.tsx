@@ -1,20 +1,22 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Home, Zap, Radar, LayoutGrid } from "lucide-react";
+import { Home, Zap, ScanLine, Radar, LayoutGrid } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { useI18n } from "@/lib/i18n/useI18n";
 import { useReducedMotion } from "@/lib/design/useReducedMotion";
 import { cn } from "@/lib/utils";
 
 type Tab = {
-  key: "home" | "flash" | "radar" | "menu";
-  to?: string;
+  key: "home" | "flash" | "scan" | "radar" | "menu";
+  to?: "/" | "/flash" | "/scan" | "/radar";
   icon: React.ComponentType<{ className?: string }>;
-  labelKey: "nav.home" | "nav.flash" | "nav.radar" | "nav.menu";
+  labelKey: "nav.home" | "nav.flash" | "nav.scan" | "nav.radar" | "nav.menu";
 };
 
 const TABS: Tab[] = [
   { key: "home", to: "/", icon: Home, labelKey: "nav.home" },
   { key: "flash", to: "/flash", icon: Zap, labelKey: "nav.flash" },
+  { key: "scan", to: "/scan", icon: ScanLine, labelKey: "nav.scan" },
   { key: "radar", to: "/radar", icon: Radar, labelKey: "nav.radar" },
   { key: "menu", icon: LayoutGrid, labelKey: "nav.menu" },
 ];
@@ -26,7 +28,7 @@ interface BottomNavProps {
 
 /**
  * Floating bottom navigation — calm, glassy, breathing.
- * 4 tabs. The "menu" tab is a 2x2 grid that opens the MenuSheet.
+ * Five destinations. Categories uses a 2x2 grid opening the MenuSheet.
  * Pure presentation; no business logic.
  */
 export function BottomNav({ onOpenMenu, menuOpen }: BottomNavProps) {
@@ -40,7 +42,6 @@ export function BottomNav({ onOpenMenu, menuOpen }: BottomNavProps) {
       className="fixed inset-x-0 bottom-0 z-40 flex justify-center pb-[max(env(safe-area-inset-bottom),0.75rem)] pointer-events-none"
     >
       <ul
-        role="tablist"
         className="glass pointer-events-auto flex items-center gap-1 rounded-full border border-border-soft px-2 py-2 shadow-[var(--shadow-float)]"
       >
         {TABS.map((tab) => {
@@ -74,28 +75,31 @@ export function BottomNav({ onOpenMenu, menuOpen }: BottomNavProps) {
           );
 
           return (
-            <li key={tab.key} role="presentation">
+            <li key={tab.key}>
               {isMenu ? (
-                <button
+                <Button
+                  variant="ghost"
                   type="button"
                   onClick={onOpenMenu}
                   aria-label={t("nav.open_menu")}
                   aria-haspopup="dialog"
                   aria-expanded={menuOpen}
-                  className="rounded-full outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  title={label}
+                  className="h-auto rounded-full p-0 outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 >
                   {inner}
-                </button>
-              ) : (
+                </Button>
+              ) : tab.to ? (
                 <Link
-                  to={tab.to!}
+                  to={tab.to}
+                  title={label}
                   aria-label={label}
                   aria-current={active ? "page" : undefined}
                   className="rounded-full outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 >
                   {inner}
                 </Link>
-              )}
+              ) : null}
             </li>
           );
         })}
